@@ -379,7 +379,6 @@ func (w *BufWindow) updateMD() {
 }
 
 func (w *BufWindow) showCursor(x, y int, main bool) {
-	w.updateMD()
 	if w.active {
 		if main {
 			screen.ShowCursor(x, y)
@@ -808,4 +807,5 @@ func (w *BufWindow) Display() {
 	w.displayStatusLine()
 	w.displayScrollBar()
 	w.displayBuffer()
+	w.updateMD()
 }
