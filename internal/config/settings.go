@@ -281,6 +281,7 @@ var defaultCommonSettings = map[string]interface{}{
 	"readonly":       false,
 	"rmtrailingws":   false,
 	"ruler":          true,
+	"rulers":         make([]interface{}, 0),
 	"relativeruler":  false,
 	"savecursor":     false,
 	"saveundo":       false,
