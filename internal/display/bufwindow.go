@@ -351,15 +351,15 @@ func (w *BufWindow) getStyle(style tcell.Style, bloc buffer.Loc) (tcell.Style, b
 	return style, false
 }
 
-func (w *BufWindow) drawRuler(r_ float64) {
-	if r_ < 0 {
+func (w *BufWindow) drawGuide(x_ float64) {
+	if x_ < 0 {
 		return
 	}
 
-	r_ += 1
+	x_ += 1
 
-	var r = int(r_)
-	var xOffset = w.X + r
+	var x = int(x_)
+	var xOffset = w.X + x
 
 	if w.Buf.Settings["ruler"] == true && w.Buf.Settings["relativeRuler"] != true {
 		xOffset += w.maxLineNumLength;
@@ -372,10 +372,10 @@ func (w *BufWindow) drawRuler(r_ float64) {
 }
 
 func (w *BufWindow) updateMD() {
-	var rulers = config.GetGlobalOption("rulers")
+	var guides = config.GetGlobalOption("guides")
 
-	for _, r := range (rulers.([]interface{})) {
-		w.drawRuler(r.(float64))
+	for _, g := range (guides.([]interface{})) {
+		w.drawGuide(g.(float64))
 	}
 }
 
