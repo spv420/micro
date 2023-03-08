@@ -40,9 +40,16 @@ func (w *UIWindow) drawNode(n *views.Node) {
 	for i, c := range cs {
 		if c.Kind == views.STVert {
 			if i != len(cs)-1 {
-				for h := 0; h < c.H; h++ {
+				for h := 0; h < c.H - 1; h++ {
 					screen.SetContent(c.X+c.W, c.Y+h, divchar, combc, dividerStyle)
 				}
+
+				var tmpStyle = config.DefStyle
+				if style, ok := config.Colorscheme["statusline"]; ok {
+					tmpStyle = style;
+				}
+
+				screen.SetContent(c.X+c.W, c.Y+c.H - 1, ' ', nil, tmpStyle)
 			}
 		}
 		w.drawNode(c)
