@@ -352,6 +352,12 @@ func (w *BufWindow) getStyle(style tcell.Style, bloc buffer.Loc) (tcell.Style, b
 }
 
 func (w *BufWindow) drawRuler(r_ float64) {
+	if r_ < 0 {
+		return
+	}
+
+	r_ += 1
+
 	var r = int(r_)
 	var xOffset = w.X + r
 
