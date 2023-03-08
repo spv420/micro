@@ -367,7 +367,7 @@ func (w *BufWindow) drawRuler(r_ float64) {
 
 	for i := 0; i < w.Height - 1; i++ {
 		var r, combc, style, _ = screen.GetContent(xOffset, w.Y + i)
-		screen.SetContent(xOffset, w.Y + i, r, combc, style.Reverse(true))
+		screen.SetContent(xOffset, w.Y + i, r, combc, style.Reverse(true).Foreground(tcell.ColorWhite))
 	}
 }
 
