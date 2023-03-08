@@ -351,7 +351,29 @@ func (w *BufWindow) getStyle(style tcell.Style, bloc buffer.Loc) (tcell.Style, b
 	return style, false
 }
 
+func (w *BufWindow) drawRuler(r_ float64) {
+	var r = int(r_)
+	var xOffset = w.X
+
+	if w.Buf.Settings["ruler"] == true && w.Buf.Settings["relativeRuler"] != true {
+		xOffset += w.maxLineNumLength;
+	}
+
+	for i := 0; i < w.Height - 1; i++ {
+		screen.SetContent(xOffset + r, w.Y + i, screen.GetContent(xOffset + r, w.Y + i), nil, config.DefStyle.Reverse(true))
+	}
+}
+
+func (w *BufWindow) updateMD() {
+	var rulers = config.GetGlobalOption("rulers")
+
+	for _, r := range (rulers.([]interface{})) {
+		w.drawRuler(r.(float64))
+	}
+}
+
 func (w *BufWindow) showCursor(x, y int, main bool) {
+	w.updateMD()
 	if w.active {
 		if main {
 			screen.ShowCursor(x, y)

@@ -83,6 +83,11 @@ func UseFake() bool {
 	return util.FakeCursor || config.GetGlobalOption("fakecursor").(bool)
 }
 
+func GetContent(x, y int) rune {
+	r, _, _, _ := Screen.GetContent(x, y)
+	return r
+}
+
 // ShowFakeCursorMulti is the same as ShowFakeCursor except it does not
 // reset previous locations of the cursor
 // Fake cursors are also necessary to display multiple cursors
