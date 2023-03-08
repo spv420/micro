@@ -13,7 +13,7 @@ into the original, that's perfectly fine. (and obviously allowed by the license 
 
 Some of these changes include:
 * Adding support for "guides" &mdash; vertical lines at a set horizontal position to help stay within line-length limits.
-* Adding a command that inserts the output of a shell command into the current buffer
+* Adding a command that inserts the output of a shell command into the current buffer.
 
 ---
 
