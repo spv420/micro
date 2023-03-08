@@ -18,6 +18,8 @@ import (
 	"github.com/zyedidia/micro/v2/internal/screen"
 	"github.com/zyedidia/micro/v2/internal/shell"
 	"github.com/zyedidia/micro/v2/internal/util"
+
+	"github.com/go-git/go-git/v5"
 )
 
 // A Command contains information about how to execute a command
@@ -64,6 +66,7 @@ func InitCommands() {
 		"raw":        {(*BufPane).RawCmd, nil},
 		"textfilter": {(*BufPane).TextFilterCmd, nil},
 		"inscmdout":  {(*BufPane).InsCmdOutCmd, nil},
+		"git":        {(*BufPane).GitCmd, nil},
 	}
 }
 
@@ -112,6 +115,14 @@ func (h *BufPane) PluginCmd(args []string) {
 	}
 
 	config.PluginCommand(buffer.LogBuf, args[0], args[1:])
+}
+
+func (h *BufPane) GitCmd(args []string) {
+	if args[0] == "clone" {
+		git.PlainClone("/tmp/foo", false, &git.CloneOptions{
+		    URL: args[1],
+		})
+	}
 }
 
 func (h *BufPane) InsCmdOutCmd(args []string) {
