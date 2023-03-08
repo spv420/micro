@@ -8,11 +8,11 @@
 [![Snap Status](https://snapcraft.io/micro/badge.svg)](https://snapcraft.io/micro)
 
 NOTE: This repository is a fork of the original [**micro**](https://github.com/zyedidia/micro), which I ([spv](https://spv.sh)) forked to
-add new features, some of which may be out-of-scope for the original micro. If zyedidia wants to integrate any of my changes back into
-the original, that's perfectly fine. (and obviously allowed by the license :P)
+add new features, some of which may be out-of-scope for the original micro. Also, if zyedidia wants to integrate any of my changes back
+into the original, that's perfectly fine. (and obviously allowed by the license :P)
 
 Some of these changes include:
-* Adding support for "guides" &mdash; vertical lines at a set horizontal position to help stay within line-length limits.
+* Adding support for "guides" &mdash; vertical lines at a set column(s) to help stay within line-length limits.
 * Adding a command that inserts the output of a shell command into the current buffer
 
 ---
