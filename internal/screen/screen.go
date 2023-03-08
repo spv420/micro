@@ -83,9 +83,9 @@ func UseFake() bool {
 	return util.FakeCursor || config.GetGlobalOption("fakecursor").(bool)
 }
 
-func GetContent(x, y int) rune {
-	r, _, _, _ := Screen.GetContent(x, y)
-	return r
+func GetContent(x, y int) (primary rune, combining []rune, style tcell.Style, width int) {
+	r, combc, style, width := Screen.GetContent(x, y)
+	return r, combc, style, width
 }
 
 // ShowFakeCursorMulti is the same as ShowFakeCursor except it does not
