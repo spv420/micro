@@ -63,6 +63,7 @@ func InitCommands() {
 		"retab":      {(*BufPane).RetabCmd, nil},
 		"raw":        {(*BufPane).RawCmd, nil},
 		"textfilter": {(*BufPane).TextFilterCmd, nil},
+		"inscmdout":  {(*BufPane).InsCmdOutCmd, nil},
 	}
 }
 
@@ -111,6 +112,26 @@ func (h *BufPane) PluginCmd(args []string) {
 	}
 
 	config.PluginCommand(buffer.LogBuf, args[0], args[1:])
+}
+
+func (h *BufPane) InsCmdOutCmd(args []string) {
+	// h.Cursor.Loc.X
+	var cmd = strings.Join(args, " ")
+
+	if cmd == "" {
+		InfoBar.Prompt("$ ", "", "Shell", nil, func(resp string, canceled bool) {
+			if !canceled {
+				var out, _ = shell.RunCommand(resp)
+				h.Buf.Insert(h.Cursor.Loc, out)
+			}
+		})
+
+		return
+	}
+
+	var out, _ = shell.RunCommand(cmd)
+
+	h.Buf.Insert(h.Cursor.Loc, out)
 }
 
 // RetabCmd changes all spaces to tabs or all tabs to spaces
