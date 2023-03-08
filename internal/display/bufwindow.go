@@ -353,14 +353,14 @@ func (w *BufWindow) getStyle(style tcell.Style, bloc buffer.Loc) (tcell.Style, b
 
 func (w *BufWindow) drawRuler(r_ float64) {
 	var r = int(r_)
-	var xOffset = w.X
+	var xOffset = w.X + r
 
 	if w.Buf.Settings["ruler"] == true && w.Buf.Settings["relativeRuler"] != true {
 		xOffset += w.maxLineNumLength;
 	}
 
 	for i := 0; i < w.Height - 1; i++ {
-		screen.SetContent(xOffset + r, w.Y + i, screen.GetContent(xOffset + r, w.Y + i), nil, config.DefStyle.Reverse(true))
+		screen.SetContent(xOffset, w.Y + i, screen.GetContent(xOffset, w.Y + i), nil, config.DefStyle.Reverse(true))
 	}
 }
 
