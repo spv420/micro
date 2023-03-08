@@ -359,6 +359,11 @@ func (w *BufWindow) drawGuide(x_ float64) {
 	x_ += 1
 
 	var x = int(x_)
+
+	if x >= w.Width {
+		return
+	}
+
 	var xOffset = w.X + x
 
 	if w.Buf.Settings["ruler"] == true && w.Buf.Settings["relativeRuler"] != true {
