@@ -7,6 +7,15 @@
 [![Join the chat at https://gitter.im/zyedidia/micro](https://badges.gitter.im/zyedidia/micro.svg)](https://gitter.im/zyedidia/micro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Snap Status](https://snapcraft.io/micro/badge.svg)](https://snapcraft.io/micro)
 
+NOTE: This repository is a fork of the original [**micro**](https://github.com/zyedidia/micro), which I ([spv](https://spv.sh)) forked to
+add new features, some of which may be out-of-scope for the original micro. If zyedidia wants to integrate any of my changes back into
+the original, that's perfectly fine. (and obviously allowed by the license :P)
+
+Some of these changes include:
+* Adding support for "rulers" &mdash; vertical lines at a set horizontal position to help stay within line-length limits.
+
+---
+
 **micro** is a terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the capabilities
 of modern terminals. It comes as a single, batteries-included, static binary with no dependencies; you can download and use it right now!
 
