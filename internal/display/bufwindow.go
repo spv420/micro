@@ -379,8 +379,11 @@ func (w *BufWindow) drawGuide(x_ float64) {
 func (w *BufWindow) updateMD() {
 	var guides = config.GetGlobalOption("guides")
 
-	for _, g := range (guides.([]interface{})) {
-		w.drawGuide(g.(float64))
+	switch v := guides.(type) {
+		case []interface{}:
+			for _, g := range (v) {
+				w.drawGuide(g.(float64))
+			}
 	}
 }
 
